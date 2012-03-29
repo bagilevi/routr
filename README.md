@@ -1,5 +1,7 @@
 # Routr
 
+[![Build Status](https://secure.travis-ci.org/bagilevi/routr.png)](http://travis-ci.org/bagilevi/routr)
+
 Implements Dijkstra's algorithm to find the shortest path in a graph.
 
 The cost of an edge can be more general than just a numeric value.
