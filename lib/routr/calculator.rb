@@ -98,7 +98,7 @@ module Routr
 
     def reachable?(node)
       debug "reachable?(#{node.inspect})"
-      (best_distance_to(node) != :infinity)
+      (best_distance_to(node) != :infinity)\
       .tap {|r| debug "=> #{r.inspect}" }
     end
 
@@ -106,7 +106,7 @@ module Routr
     # OPTIMIZE: maintain a sorted list, so we don't have to search the whole set every time
     def node_with_minimum_distance # unvisited node with minimum distance
       debug "node_with_minimum_distance"
-      @candidates.min_by{ |x| best_distance_to(x) }
+      @candidates.min_by{ |x| best_distance_to(x) }\
       .tap{|x| debug "=> #{x.inspect}"}
     end
 
@@ -116,7 +116,7 @@ module Routr
 
     def any_unvisited_nodes?
       debug "any_unvisited_nodes?"
-      @candidates.any?
+      @candidates.any?\
       .tap{|r| debug "=> #{r.inspect}" }
     end
 
