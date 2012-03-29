@@ -17,22 +17,23 @@ module Routr
 
 
   class Route
-    attr_reader :hops, :members, :distance
+    attr_reader :hops, :members, :distance, :raw
 
-    def initialize(raw_route)
-      raw_route ||= []
-      @hops = raw_route[0..-2].to_enum.with_index.map{|item, index|
+    def initialize(raw)
+      @raw = raw
+      raw ||= []
+      @hops = raw[0..-2].to_enum.with_index.map{|item, index|
         Hop.new(
-          :from => raw_route[index][:node],
-          :to => raw_route[index + 1][:node],
-          :distance => raw_route[index + 1][:distance]
+          :from => raw[index][:node],
+          :to => raw[index + 1][:node],
+          :distance => raw[index + 1][:distance]
         )
       }
-      @members = raw_route.map{|item| item[:node]}
+      @members = raw.map{|item| item[:node]}
     end
 
-    def self.from_raw(raw_route)
-      new(raw_route)
+    def self.from_raw(raw)
+      new(raw)
     end
 
     def distance

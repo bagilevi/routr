@@ -106,5 +106,17 @@ describe Routr do
     route.found?.should be_false
     route.missing?.should be_true
   end
+
+  it "exposes the route as raw ruby" do
+    route = Routr.new(SimpleInterface.new).calculate_route(
+      :from => 'A',
+      :to => 'D'
+    )
+    route.raw.should == [
+      { :node => 'A', :distance => 0 },
+      { :node => 'B', :distance => 50 },
+      { :node => 'D', :distance => 100 },
+    ]
+  end
 end
 
